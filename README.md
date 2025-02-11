@@ -1,2 +1,2 @@
 # python_dash_metadata
-This is a tool to make it more easy for researchers to save their metadata. Because it will be a interactive webinterface and not commandline, because they are scared of that.  
+This is a tool to make it easier for researchers to save their metadata. Since it will be an interactive web interface and not a command line, because they are scared of that.
