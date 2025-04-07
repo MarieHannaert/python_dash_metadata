@@ -14,7 +14,8 @@ app.layout = dbc.Container([
     html.H1("Metadata Form"),
     dcc.Markdown('''
     It is very import to **fill in the metadata** of your data.  
-    If this is not filled in correctly your data will not be saved on our LTS *(long term storage)*. 
+    If this is not filled in correctly your data will not be saved on our LTS *(long term storage)*.
+    Or there will be no project made for you on the biominaserver.
     '''),
 
     dbc.Form([
