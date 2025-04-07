@@ -41,6 +41,16 @@ app.layout = dbc.Container([
             ),
         ]),
         dbc.Row([
+            dbc.Label("End Project Date", className="fw-bold"),
+            dcc.DatePickerSingle(
+                id="project_end_date",
+                min_date_allowed=date(1995, 1, 1),
+                max_date_allowed=date(2030, 2, 28),
+                initial_visible_month=date.today(),
+                date=date.today()
+            ),
+        ]),
+        dbc.Row([
             dbc.Label("Project Status", className="fw-bold"),
             dbc.Input(id="project_status", type="text", placeholder="e.g., submitted, in progress, completed"),
         ]),
@@ -66,7 +76,7 @@ app.layout = dbc.Container([
         ]),
         dbc.Row([
             dbc.Label("Collaborator", className="fw-bold"),
-            dbc.Input(id="collaborator", type="text"),
+            dbc.Input(id="collaborator", type="text", placeholder="All the people that are involved in the project, and thus need access to the data"),
         ]),
         dbc.Row([
             dbc.Label("Service Type", className="fw-bold"),
@@ -104,12 +114,12 @@ app.layout = dbc.Container([
     Output("output_message", "children"),
     Input("submit", "n_clicks"),
     [State("location", "value"), State("project_name", "value"), State("project_description", "value"),
-     State("project_start_date", "date"), State("project_status", "value"), State("user_name", "value"),
+     State("project_start_date", "date"), State("project_end_date", "date"), State("project_status", "value"), State("user_name", "value"),
      State("user_email", "value"), State("principal_investigator", "value"), State("collaborator", "value"),
      State("service_type", "value"), State("sample_type", "value"), State("organism", "value"),
      State("reference_genome", "value")]
 )
-def save_metadata(n_clicks, location, project_name, project_description, project_start_date, project_status, 
+def save_metadata(n_clicks, location, project_name, project_description, project_start_date, project_end_date, project_status, 
                   user_name, user_email, principal_investigator, collaborator, service_type, sample_type, 
                   organism, reference_genome):
     if n_clicks is None:
@@ -125,6 +135,7 @@ def save_metadata(n_clicks, location, project_name, project_description, project
         "Project Name": project_name,
         "Project Description": project_description,
         "Start Date": project_start_date,
+        "End Date": project_end_date,
         "Project Status": project_status,
         "User Name": user_name,
         "User Email": user_email,
